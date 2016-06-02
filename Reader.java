@@ -50,12 +50,15 @@ public class Reader {
 		File t = db.getPath().toFile();
 		FileWriter f = new FileWriter(t, false); 
 		String s = "";
+		f.write(s);
+		f.close();
+
+		f = new FileWriter(t, true); 
 		for (int i = 0; i < db.getdata().size(); i++) {
 			Profile p = db.getdata().get(i);
-			s+=(p.getname() + ", " + p.getvehicle().getcolor() + " " + p.getvehicle().getbrand() + " " + p.getvehicle().getmake() + " " + Integer.toString(p.getvehicle().getyear()) + "\ud000a");
-			
+			f.write(p.getname() + ", " + p.getvehicle().getcolor() + " " + p.getvehicle().getbrand() + " " + p.getvehicle().getmake() + " " + Integer.toString(p.getvehicle().getyear()));
+			f.write(System.lineSeparator());
 		}
-		f.write(s);
 		f.close();
 	}
 }

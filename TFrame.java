@@ -84,6 +84,9 @@ public class TFrame extends JFrame {
 		contentPane.add(renderer, "cell 1 1 10 1,grow");
 		contentPane.add(btnNewButton, "cell 0 2,growx");
 		
+		JButton btnUpdate = new JButton("Update");
+		contentPane.add(btnUpdate, "cell 4 2");
+		btnUpdate.addActionListener(new UpdateListener());
 	}
 	
 	private class NewLotListener implements ActionListener {
@@ -209,6 +212,20 @@ public class TFrame extends JFrame {
 				removepanelcars(renderer);
 			}
 		}
+	}
+	
+	private class UpdateListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if (currdbnum > -1) {
+				setpanelcars(renderer);
+			}
+			else {
+				JOptionPane.showMessageDialog(contentPane, "No Lots");
+			}
+		}
+		
 	}
 	/**
 	 * Dynamically render cars on to the given panel

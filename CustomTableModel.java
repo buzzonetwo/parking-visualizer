@@ -66,6 +66,7 @@ public class CustomTableModel extends AbstractTableModel {
     	fireTableCellUpdated(rowIndex, columnIndex);
     	} catch (Exception e){
     		JOptionPane.showMessageDialog(null, "You must add a profile first");
+    		System.err.println(e);
     	}
     }
     /**
